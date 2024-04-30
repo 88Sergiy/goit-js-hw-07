@@ -1,11 +1,16 @@
-const nameInput = document.getElementById("name-input");
-const nameOutput = document.getElementById("name-output");
+const nameInput = document.getElementById('name-input');
+nameInput.classList.add('input')
+const nameOutput = document.getElementById('name-output');
 
-nameInput.addEventListener("input", function () {
-  let name = nameInput.value.trim();
-  if (name === "") {
-    nameOutput.textContent = "Anonymous";
+const greeting = document.querySelector('h1');
+greeting.classList.add('hello');
+
+nameInput.addEventListener('input', event => {
+  const inputValue = event.target.value.trim(); 
+
+  if (inputValue === '' || inputValue===' ') {
+    nameOutput.textContent = 'Anonymous'; 
   } else {
-    nameOutput.textContent = name;
+    nameOutput.textContent = inputValue; 
   }
 });
