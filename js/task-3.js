@@ -1,17 +1,11 @@
-const userName = document.getElementById("name-input");
-const userNameOutput = document.getElementById("name-output");
-console.log(userName);
-console.log(userNameOutput);
+const nameInput = document.getElementById("name-input");
+const nameOutput = document.getElementById("name-output");
 
-function inputHandler(event) {
-  if (event.target.value.trim() === "") {
-    userNameOutput.textContent = "Anonymous";
+nameInput.addEventListener("input", function () {
+  let name = nameInput.value.trim();
+  if (name === "") {
+    nameOutput.textContent = "Anonymous";
   } else {
-    userNameOutput.textContent = event.target.value.trim();
+    nameOutput.textContent = name;
   }
-
-  console.log("event.target.value.trim() " + event.target.value.trim());
-}
-
-userName.addEventListener("input", inputHandler);
-
+});

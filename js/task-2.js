@@ -25,24 +25,21 @@ const images = [
   }
 ];
 
+gallery.innerHTML = markup;
+
 const gallery = document.querySelector(".gallery");
 
-function createImageMarkup(image) {
-  const markup = `<li class="gallery-item">
-          <img
-          class="gallery-image"
-          src="${image.url}"
-          alt="${image.alt}"          
-        />
-        
-    </li>`;
-  return markup;
-}
+const fragment = document.createDocumentFragment();
 
-let markup = "";
-let i = 1;
-for (let image of images) {
-  markup += createImageMarkup(image);
-}
+images.forEach((image) => {
+  const li = document.createElement("li");
+  const img = document.createElement("img");
 
-gallery.innerHTML = markup;
+  img.src = image.url;
+  img.alt = image.alt;
+
+  li.appendChild(img);
+  fragment.appendChild(li);
+});
+
+gallery.appendChild(fragment);
