@@ -24,22 +24,24 @@ const images = [
     alt: "Lighthouse Coast Sea",
   }
 ];
-
-gallery.innerHTML = markup;
-
 const gallery = document.querySelector(".gallery");
 
-const fragment = document.createDocumentFragment();
+function createImageMarkup(image) {
+  const markup = `<li class="gallery-item">
+          <img
+          class="gallery-image"
+          src="${image.url}"
+          alt="${image.alt}"          
+        />
+        
+    </li>`;
+  return markup;
+}
 
-images.forEach((image) => {
-  const li = document.createElement("li");
-  const img = document.createElement("img");
+let markup = "";
+let i = 1;
+for (let image of images) {
+  markup += createImageMarkup(image);
+}
 
-  img.src = image.url;
-  img.alt = image.alt;
-
-  li.appendChild(img);
-  fragment.appendChild(li);
-});
-
-gallery.appendChild(fragment);
+gallery.innerHTML = markup;
